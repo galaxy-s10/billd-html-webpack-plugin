@@ -5,7 +5,7 @@
 nuxt.config.js
 
 ```js
-import BilldHtmlWebpackPlugin from './billd-html-webpack-plugin';
+import BilldHtmlWebpackPlugin from 'billd-html-webpack-plugin';
 
 export default {
   // ...
@@ -24,10 +24,13 @@ next.config.js
 
 ```js
 const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+
 const nextConfig = {
+  // ...
   webpack: (config) => {
     config.plugins = [
       ...config.plugins,
+      // ...
       new BilldHtmlWebpackPlugin({ next12: true }),
     ];
     return config;
@@ -46,7 +49,9 @@ const { defineConfig } = require('@vue/cli-service');
 const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
 
 module.exports = defineConfig({
+  // ...
   chainWebpack: (config) => {
+    // ...
     config.plugin('BilldHtmlWebpackPlugin').use(BilldHtmlWebpackPlugin, [
       {
         vuecli5: true,
@@ -57,3 +62,17 @@ module.exports = defineConfig({
 ```
 
 ## webpack5
+
+webpack.config.js
+
+```js
+const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+
+module.exports = {
+  // ...
+  plugins: [
+    // ...
+    new BilldHtmlWebpackPlugin({ webpack5: true }),
+  ],
+};
+```

@@ -12,7 +12,6 @@ class PluginApply {
 
   constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV }) {
     const isDev = NODE_ENV === 'development';
-    console.log(isDev, 'isDev');
     if (!isDev) {
       compiler.hooks.entryOption.tap(pluginName, (context, entry) => {
         this.arr = entry.app;
@@ -21,7 +20,6 @@ class PluginApply {
       compiler.hooks.done.tapAsync(pluginName, (compilation, callback) => {
         this.arr.forEach((path) => {
           if (this.clientReg.exec(path)) {
-            console.log('匹配到clientReg');
             const path1 = path.replace(this.clientReg, '');
             const htmlpath = nodePath.join(
               path1,
@@ -37,7 +35,6 @@ class PluginApply {
             writeFileSync(htmlpath, str1);
           }
           if (this.serverReg.exec(path)) {
-            console.log('匹配到serverReg');
             const path1 = path.replace(this.serverReg, '');
             const htmlpath = nodePath.join(
               path1,

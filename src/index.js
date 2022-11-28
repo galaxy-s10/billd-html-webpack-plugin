@@ -13,7 +13,6 @@ class BilldHtmlWebpackPlugin {
   }
 
   apply(compiler) {
-    console.log('执行了');
     if (this.options.nuxt2) {
       // eslint-disable-next-line
       new Nuxt2Apply(compiler, { pluginName: this.pluginName });
