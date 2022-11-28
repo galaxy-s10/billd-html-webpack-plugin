@@ -53,7 +53,7 @@ class PluginApply {
         callback();
       });
     } else {
-      compiler.hooks.emit.tap(this.pluginName, (compilation) => {
+      compiler.hooks.emit.tap(pluginName, (compilation) => {
         Object.keys(compilation.assets).forEach((name) => {
           if (name === 'app.js') {
             //   获取之前的内容
