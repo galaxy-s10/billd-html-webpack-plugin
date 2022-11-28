@@ -1,5 +1,6 @@
 import Next12Apply from './next12';
 import Nuxt2Apply from './nuxt2';
+import Vuecli4Apply from './vuecli4';
 import Vuecli5Apply from './vuecli5';
 import Webpack5Apply from './webpack5';
 
@@ -22,6 +23,9 @@ class BilldHtmlWebpackPlugin {
     } else if (this.options.vuecli5) {
       // eslint-disable-next-line
       new Vuecli5Apply(compiler, { pluginName: this.pluginName });
+    } else if (this.options.vuecli4) {
+      // eslint-disable-next-line
+      new Vuecli4Apply(compiler, { pluginName: this.pluginName });
     } else if (this.options.webpack5) {
       // eslint-disable-next-line
       new Webpack5Apply(compiler, { pluginName: this.pluginName });

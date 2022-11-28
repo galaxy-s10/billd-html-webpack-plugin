@@ -24,9 +24,16 @@
 
 # 简介
 
-一个给你的项目注入构建信息的 webpack 插件，兼容 next12、nuxt2、vuecli5
+一个给你的项目注入构建信息的 webpack 插件，兼容 next12、nuxt2、vuecli4、vuecli5
 
-> webpack5 试验性兼容，create-react-app 即将兼容
+> vuecli4/5 都是只支持默认的单页应用，如果你的 vuecli 配置了多页应用，可能会不生效！
+
+# 原理
+
+- nuxt2、vuecli4 是基于 webpack4 的，主要是根据 compiler.hooks.emit 这个钩子，在入口文件注入项目信息然后再输出
+- next12、vuecli5 是基于 webpack5 的，主要是根据 compiler.hooks.compilation 这个钩子以及 compilation.hooks.processAssets， 对入口文件进行注入项目信息然后再输出
+
+> 虽然 billd-html-webpack-plugin 是个 webpack 插件，但目前并没有做到足够通用，在一些集成 webpack 的脚手架上如 vuecli、nuxt、next 等，基本能兼容（因为它们的配置基本都是写固定了），但如果是你自己搭建的 webpack 的话，目前只会给 index.html 注入项目信息~
 
 # 安装
 
@@ -88,13 +95,33 @@ module.exports = defineConfig({
   // ...
   chainWebpack: (config) => {
     // ...
-    config.plugin('BilldHtmlWebpackPlugin').use(BilldHtmlWebpackPlugin, [
+    config.plugin('billd-html-webpack-plugin').use(BilldHtmlWebpackPlugin, [
       {
         vuecli5: true,
       },
     ]);
   },
 });
+```
+
+## vuecli4
+
+vue.config.js
+
+```js
+const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+
+module.exports = {
+  // ...
+  chainWebpack: (config) => {
+    // ...
+    config.plugin('billd-html-webpack-plugin').use(BilldHtmlWebpackPlugin, [
+      {
+        vuecli4: true,
+      },
+    ]);
+  },
+};
 ```
 
 ## webpack5
