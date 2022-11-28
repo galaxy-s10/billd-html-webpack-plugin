@@ -1,3 +1,12 @@
+## [0.0.6](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.5...v0.0.6) (2022-11-28)
+
+
+### feat
+
+* 支持vuecli4 ([ccf0553](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/ccf0553466082d2fc310d6354836ba19b9acc1a8))
+
+
+
 ## [0.0.5](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.4...v0.0.5) (2022-11-28)
 
 
