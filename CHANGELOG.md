@@ -1,3 +1,12 @@
+## [0.0.3](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.2...v0.0.3) (2022-11-28)
+
+
+### fix
+
+* 修复细节 ([95ec5dd](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/95ec5ddfef1bfdd629cb3d4d8a2e37f2985f71b9))
+
+
+
 ## [0.0.2](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.1...v0.0.2) (2022-11-28)
 
 
