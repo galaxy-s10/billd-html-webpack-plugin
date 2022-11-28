@@ -1,3 +1,12 @@
+## [0.0.5](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.4...v0.0.5) (2022-11-28)
+
+
+### feat
+
+* 修改cjs打包结构 ([f125dc9](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/f125dc939b15ebb791bea43d3882d4099fdfd5db))
+
+
+
 ## [0.0.4](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.3...v0.0.4) (2022-11-28)
 
 
