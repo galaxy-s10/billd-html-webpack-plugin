@@ -3,7 +3,7 @@ import { info } from './getData';
 class PluginApply {
   reg = /static\/chunks\/webpack/;
 
-  constructor(compiler, pluginName) {
+  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV }) {
     compiler.hooks.emit.tap(pluginName, (compilation) => {
       Object.keys(compilation.assets).forEach((data) => {
         const content = compilation.assets[data].source();

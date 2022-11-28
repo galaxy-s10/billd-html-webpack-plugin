@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import { info } from './getData';
 
 class PluginApply {
-  constructor(compiler, pluginName) {
+  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV }) {
     compiler.hooks.compilation.tap(pluginName, (compilation) => {
       compilation.hooks.processAssets.tapAsync(
         {
