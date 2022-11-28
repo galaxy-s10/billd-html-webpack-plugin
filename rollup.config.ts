@@ -4,11 +4,8 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import { defineConfig } from 'rollup';
-import esbuild from 'rollup-plugin-esbuild';
 
 import pkg from './package.json';
-
-import type { Options as ESBuildOptions } from 'rollup-plugin-esbuild';
 
 const babelRuntimeVersion = pkg.dependencies['@babel/runtime-corejs3'].replace(
   /^[^0-9]*/,
@@ -24,13 +21,6 @@ export const toPascalCase = (input: string): string => {
 };
 
 console.log(`读取了: ${__filename.slice(__dirname.length + 1)}`);
-
-const esbuildPlugin = (options?: ESBuildOptions) =>
-  esbuild({
-    minify: false,
-    // sourceMap: true, // 默认就是true
-    ...options,
-  });
 
 const allDep = [...Object.keys(pkg.dependencies || {})].map((name) =>
   RegExp(`^${name}($|/)`)
@@ -66,7 +56,6 @@ export default defineConfig([
        * 这里其实不需要用@rollup/plugin-node-resolve插件
        */
       nodeResolve(),
-      esbuildPlugin(),
       json(),
       babel({
         exclude: 'node_modules/**', // 只编译我们的源代码，最好加上它，否则打包umd可能会报错
@@ -151,7 +140,6 @@ export default defineConfig([
        * 这里其实不需要用@rollup/plugin-node-resolve插件
        */
       nodeResolve(),
-      esbuildPlugin(),
       json(),
       babel({
         exclude: 'node_modules/**', // 只编译我们的源代码，最好加上它，否则打包umd可能会报错
@@ -201,12 +189,4 @@ export default defineConfig([
       }),
     ],
   },
-  // {
-  //   input: './src/index.js',
-  //   output: {
-  //     file: './dist/index.d.ts',
-  //     name: pkg.name,
-  //   },
-  //   plugins: [dtsPlugin()],
-  // },
 ]);

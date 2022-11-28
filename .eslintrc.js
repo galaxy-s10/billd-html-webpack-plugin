@@ -36,9 +36,6 @@ module.exports = {
     // 'airbnb-base', // airbnb的eslint规范，它会对import和require进行排序，挺好的。如果不用它的话，需要在env添加node:true
     'eslint:recommended',
     'plugin:import/recommended', // https://github.com/import-js/eslint-plugin-import#installation
-    'plugin:import/typescript', // https://github.com/import-js/eslint-plugin-import#typescript
-    'plugin:@typescript-eslint/recommended', // https://typescript-eslint.io/docs/#quickstart
-    'plugin:@typescript-eslint/recommended-requiring-type-checking', // https://typescript-eslint.io/docs/linting/typed-linting
     'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
@@ -156,20 +153,5 @@ module.exports = {
      * // 不幸的是，React + Redux 是最常见的场景。但是，还有很多其他情况，HOC 会迫使开发人员关闭此规则。https://github.com/import-js/eslint-plugin-import/issues/544#issuecomment-245082471
      */
     'import/no-named-as-default': 0, // https://github.com/import-js/eslint-plugin-import/blob/v2.26.0/docs/rules/no-named-as-default.md
-
-    // @typescript-eslint插件
-    '@typescript-eslint/no-floating-promises': 2, // 要求适当处理类似 Promise 的语句。即将await或者return Promise，或者对promise进行.then或者.catch
-    '@typescript-eslint/restrict-template-expressions': 2, // 强制模板文字表达式为string类型。即const a = {};console.log(`${a}`);会报错
-
-    '@typescript-eslint/no-explicit-any': 0, // 不允许定义any类型。即let a: any;会报错
-    '@typescript-eslint/no-non-null-assertion': 0, // 禁止使用非空断言（后缀运算符!）。即const el = document.querySelector('.app');console.log(el!.tagName);会报错
-    '@typescript-eslint/ban-ts-comment': 0, // 禁止使用@ts-<directive>注释
-    '@typescript-eslint/no-unsafe-assignment': 0, // 不允许将具有类型的值分配any给变量和属性。即const a: any = {};const b = a;会报错
-    '@typescript-eslint/no-unsafe-argument': 0, // 不允许用any类型的值调用一个函数。即let a: any;Object.keys(a);会报错
-    '@typescript-eslint/no-unsafe-member-access': 0, // 不允许对类型为any的值进行成员访问。即const a: any = [];console.log(a[0]);会报错
-    '@typescript-eslint/no-unsafe-return': 0, // 不允许从一个函数中返回一个类型为any的值
-    '@typescript-eslint/no-unsafe-call': 0, // 不允许调用any类型的值
-    '@typescript-eslint/no-var-requires': 0, // 即不允许var foo = require('foo');。但是允许import foo = require('foo');
-    '@typescript-eslint/restrict-plus-operands': 0, // 要求加法的两个操作数是相同的类型并且是bigint, number, 或string。即const a = '1';console.log(a + 1);会报错
   },
 };

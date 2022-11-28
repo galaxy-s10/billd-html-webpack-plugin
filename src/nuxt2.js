@@ -10,18 +10,15 @@ class PluginApply {
 
   arr = [];
 
-  pluginName = '';
-
   constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV }) {
-    this.pluginName = pluginName;
     const isDev = NODE_ENV === 'development';
     console.log(isDev, 'isDev');
     if (!isDev) {
-      compiler.hooks.entryOption.tap(this.pluginName, (context, entry) => {
+      compiler.hooks.entryOption.tap(pluginName, (context, entry) => {
         this.arr = entry.app;
       });
 
-      compiler.hooks.done.tapAsync(this.pluginName, (compilation, callback) => {
+      compiler.hooks.done.tapAsync(pluginName, (compilation, callback) => {
         this.arr.forEach((path) => {
           if (this.clientReg.exec(path)) {
             console.log('匹配到clientReg');
