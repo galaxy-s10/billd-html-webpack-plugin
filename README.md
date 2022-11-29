@@ -28,6 +28,12 @@
 
 > vuecli4/5 都是只支持默认的单页应用，如果你的 vuecli 配置了多页应用，可能会不生效！
 
+## 效果
+
+![https://resource.hsslive.cn/image/6f3614e5ae7d1e47da7dc0072373887a.jpeg](https://resource.hsslive.cn/image/6f3614e5ae7d1e47da7dc0072373887a.jpeg)
+
+> 从控制台可以看到，打印了当前项目的 git 信息以及最后部署时间，非常人性化，再也不用但是部署的代码是不是最新的了~
+
 # 原理
 
 - nuxt2、vuecli4 是基于 webpack4 的，主要是根据 compiler.hooks.emit 这个钩子，在入口文件注入项目信息然后再输出
@@ -139,3 +145,7 @@ module.exports = {
   ],
 };
 ```
+
+# 源码
+
+[https://github.com/galaxy-s10/babel-plugin-import-billd](https://github.com/galaxy-s10/babel-plugin-import-billd)，欢迎 star~
