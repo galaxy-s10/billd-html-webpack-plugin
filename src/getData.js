@@ -2,6 +2,8 @@ import { execSync } from 'child_process';
 import { readFileSync } from 'fs';
 import path from 'path';
 
+import { version as BilldHtmlWebpackPluginVersion } from '../package.json';
+
 let commitHash;
 let commitUserName;
 let commitDate;
@@ -59,7 +61,7 @@ log('git提交用户:', {commitUserName});
 log('git提交日期:', {commitDate});
 log('git提交信息:', {commitMessage});
 log('git提交哈希:', {commitHash});
-log('Powered by:', 'billd-html-webpack-plugin v${pkg.version}');
+log('Powered by:', 'billd-html-webpack-plugin v${BilldHtmlWebpackPluginVersion}');
 log('billd-html-webpack-plugin:', 'https://www.npmjs.com/package/billd-html-webpack-plugin');
 })();
 `;
