@@ -1,3 +1,16 @@
+## [0.0.7](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.6...v0.0.7) (2022-11-30)
+
+
+### docs
+
+* 修改readme ([bdb646a](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/bdb646a56083ce3be0309a4d3a357c201c627a88))
+
+### feat
+
+* 添加版权 ([9e1256d](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/9e1256dc7efd19a0a462347c023538aebf86df43))
+
+
+
 ## [0.0.6](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.5...v0.0.6) (2022-11-28)
 
 
