@@ -35,6 +35,11 @@ try {
   console.log(error);
 }
 
+const pkgName = pkg.name;
+const pkgVersion = pkg.version;
+const pkgRepository =
+  typeof pkg.repository === 'object' ? pkg.repository.url : pkg.repository;
+
 const templateStr = `
 ;(function(){
 var log = (title, value) => {
@@ -54,13 +59,10 @@ log('git提交用户:', {commitUserName});
 log('git提交日期:', {commitDate});
 log('git提交信息:', {commitMessage});
 log('git提交哈希:', {commitHash});
+log('Powered by:', 'billd-html-webpack-plugin v${pkg.version}');
+log('billd-html-webpack-plugin:', 'https://www.npmjs.com/package/billd-html-webpack-plugin');
 })();
 `;
-
-const pkgName = pkg.name;
-const pkgVersion = pkg.version;
-const pkgRepository =
-  typeof pkg.repository === 'object' ? pkg.repository.url : pkg.repository;
 
 const replaceKeyFromValue = (str, obj) => {
   let res = str;
