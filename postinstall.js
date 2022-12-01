@@ -1,19 +1,13 @@
-console.log();
 console.log(
-  '\033[0;37;44m  INFO  \033[0m',
-  '\033[0;;34m ' +
-    `Thank you for using billd-html-webpack-plugin ( https://github.com/galaxy-s10/billd-html-webpack-plugin ) !` +
-    ' \033[0m'
+  '\n' +
+    '\u001B[96mThank you for using billd-html-webpack-plugin (\u001B[94m https://github.com/galaxy-s10/billd-html-webpack-plugin \u001B[96m)\u001B[0m' +
+    '\n\n' +
+    '\u001B[96m>\u001B[94m Author github: https://github.com/galaxy-s10 \u001B[0m' +
+    '\n' +
+    '\u001B[96m>\u001B[94m Author blog:   https://www.hsslive.cn \u001B[0m' +
+    '\n' +
+    '\u001B[96m>\u001B[94m Author npm:    https://www.npmjs.com/~huangshuisheng \u001B[0m' +
+    '\n\n' +
+    '\u001B[96mIf billd-html-webpack-plugin works for you, welcome to star ~\u001B[0m' +
+    '\n'
 );
-console.log();
-console.log(
-  '\033[0;37;44m Author \033[0m',
-  '\033[0;;34m ' + `https://github.com/galaxy-s10` + ' \033[0m'
-);
-console.log();
-
-console.log(
-  '\033[0;37;44m  BLOG  \033[0m',
-  '\033[0;;34m ' + `https://www.hsslive.cn` + ' \033[0m'
-);
-console.log();
