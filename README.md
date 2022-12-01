@@ -32,7 +32,7 @@
 
 ![https://resource.hsslive.cn/image/6f3614e5ae7d1e47da7dc0072373887a.jpeg](https://resource.hsslive.cn/image/6f3614e5ae7d1e47da7dc0072373887a.jpeg)
 
-> 从控制台可以看到，打印了当前项目的 git 信息以及最后部署时间，非常人性化，再也不用但是部署的代码是不是最新的了~
+> 从控制台可以看到，打印了当前项目的 git 信息以及最后部署时间，非常人性化，再也不用担心部署的代码是不是最新的了~
 
 # 原理
 
