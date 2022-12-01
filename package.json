@@ -21,7 +21,8 @@
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
   "files": [
-    "dist"
+    "dist",
+    "./postinstall.js"
   ],
   "scripts": {
     "build": "ts-node ./scripts/build.ts",
@@ -30,7 +31,7 @@
     "changelog:first": "conventional-changelog -p eslint -i CHANGELOG.md -s -r 0",
     "cz": "cz",
     "dev": "ts-node ./scripts/build.ts --watch",
-    "postinstall": "ts-node ./scripts/postinstall.ts",
+    "postinstall": "node ./postinstall.js",
     "lint": "eslint --config ./.eslintrc.js . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint --config ./.eslintrc.js . --ext .js,.jsx,.ts,.tsx --fix",
     "prepare": "husky install",
