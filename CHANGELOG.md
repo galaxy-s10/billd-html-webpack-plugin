@@ -1,3 +1,13 @@
+## [0.0.9](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.8...v0.0.9) (2022-12-01)
+
+
+### feat
+
+* 添加错误捕获 ([1e5bc28](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/1e5bc288787204d0ad82aba2464ed2563260570a))
+* 添加postinstall ([b1c30d1](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/b1c30d13e9b3978f43aeef551bf8af00d5b38bf1))
+
+
+
 ## [0.0.8](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.7...v0.0.8) (2022-11-30)
 
 
