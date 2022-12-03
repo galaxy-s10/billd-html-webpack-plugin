@@ -109,15 +109,13 @@ export default defineConfig([
       file: 'dist/index.cjs.js',
       /**
        * exports默认值是auto，可选：default、none。https://rollupjs.org/guide/zh/#exports
-       * 我们源代码使用了esm，而且默认导出和具名导出一起使用了，编译的时候会报警告(!) Mixing named and default exports
-       * 设置exports: 'named'就不会报警告了，但是使用了exports: 'named'后，会生成：exports["default"] = BilldHtmlWebpackPlugin;
-       * 别人通过cjs导入的话，就得const BilldHtmlWebpackPlugin = require("billd-html-webpack-plugin").default;才能拿到默认导出，
-       * 如果不使用exports: 'named'，默认会生成：module.exports = BilldHtmlWebpackPlugin;
-       * 别人通过cjs导入的话，就正常的const BilldHtmlWebpackPlugin = require("billd-html-webpack-plugin");即可
-       * 这里的BilldHtmlWebpackPlugin是一个很简单的webpack插件，就一个默认导出，复杂度很低，所以不使用exports: 'named'
-       * 报警告也不管它（这样别人用的时候可以省略.default）~
+       * 如果我们源代码默认导出和具名导出一起使用，编译的时候会报警告(!) Mixing named and default exports
+       * 设置exports: 'named'就不会报警告了（实际上只是不会报警告了，设不设置named对实际打包的结果都没影响）
+       * 如果我们源代码没有默认导出和具名导出一起使用，但是设置了exports: 'named'，会生成：exports["default"] = BilldHtmlWebpackPlugin;
+       * 别人通过cjs导入的话，就得const BilldHtmlWebpackPlugin = require("billd-html-webpack-plugin").default;才能拿到默认导出；如果不使用exports: 'named'，
+       * 默认会生成：module.exports = BilldHtmlWebpackPlugin;别人通过cjs导入的话，就正常的const BilldHtmlWebpackPlugin = require("billd-html-webpack-plugin");即可
        */
-      // exports: 'named',
+      // exports: 'named', // billd-html-webpack-plugin只有一个默认导出，因此不需要设置exports: 'named'
     },
     external: allDep,
     plugins: [
