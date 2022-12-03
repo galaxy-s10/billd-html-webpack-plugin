@@ -25,19 +25,19 @@
     "./postinstall.js"
   ],
   "scripts": {
-    "build": "ts-node ./scripts/build.ts",
-    "build:rollup": "rimraf dist && rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "build": "node ./scripts/build.js",
+    "build:rollup": "rimraf dist && rollup -c rollup.config.js",
     "changelog": "conventional-changelog -p eslint -i CHANGELOG.md -s",
     "changelog:first": "conventional-changelog -p eslint -i CHANGELOG.md -s -r 0",
     "cz": "cz",
-    "dev": "ts-node ./scripts/build.ts --watch",
+    "dev": "node ./scripts/build.js --watch",
     "postinstall": "node ./postinstall.js",
     "lint": "eslint --config ./.eslintrc.js . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint --config ./.eslintrc.js . --ext .js,.jsx,.ts,.tsx --fix",
     "prepare": "husky install",
     "prettier": "prettier --write .",
-    "release:local": "ts-node ./scripts/release.ts",
-    "release:online": "ts-node ./scripts/publish.ts"
+    "release:local": "node ./scripts/release.js",
+    "release:online": "node ./scripts/publish.js"
   },
   "config": {
     "commitizen": {

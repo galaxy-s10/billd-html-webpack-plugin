@@ -7,30 +7,11 @@ console.log(
 
 module.exports = {
   root: true,
-  settings: {
-    // 'import/parsers': {
-    //   ' @typescript-eslint/parser': ['.ts', '.tsx'],
-    // },
-    // 'import/resolver': {
-    //   typescript: {
-    //     // alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
-    //     // Choose from one of the "project" configs below or omit to use <root>/tsconfig.json by default
-    //     // use <root>/path/to/folder/tsconfig.json
-    //     project: path.resolve(__dirname),
-    //   },
-    // },
-    // 'import/resolver': {
-    //   node: {
-    //     extensions: ['.js', '.jsx'],
-    //   },
-    //   typescript: {
-    //     extensions: ['.ts', '.tsx'],
-    //   },
-    // },
-  },
+  settings: {},
   env: {
     browser: true,
     node: true,
+    es2022: true, //ES2022 为类的实例属性，又规定了一种新写法。
   },
   extends: [
     // 'airbnb-base', // airbnb的eslint规范，它会对import和require进行排序，挺好的。如果不用它的话，需要在env添加node:true
@@ -38,13 +19,10 @@ module.exports = {
     'plugin:import/recommended', // https://github.com/import-js/eslint-plugin-import#installation
     'plugin:prettier/recommended',
   ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2020,
-    tsconfigRootDir: __dirname, // https://typescript-eslint.io/docs/linting/typed-linting
-    project: ['./tsconfig.json'], // https://typescript-eslint.io/docs/linting/typed-linting
+    ecmaVersion: 2022,
   },
-  plugins: ['import', '@typescript-eslint'],
+  plugins: ['import'],
   // overrides: [],
   // rules会覆盖extends里面的规则（https://eslint.org/docs/latest/user-guide/migrating-to-6.0.0#-overrides-in-an-extended-config-file-can-now-be-overridden-by-a-parent-config-file）
   // rules里面的规则不会对overrides里面的文件生效

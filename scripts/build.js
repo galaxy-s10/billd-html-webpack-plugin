@@ -1,6 +1,6 @@
-import { execSync } from 'child_process';
+const { execSync } = require('child_process');
 
-import { chalkERROR } from './utils';
+const { chalkERROR } = require('./chalkTip');
 
 const watch = process.argv.includes('--watch');
 
