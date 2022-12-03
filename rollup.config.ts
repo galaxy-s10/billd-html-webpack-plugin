@@ -7,26 +7,19 @@ import { defineConfig } from 'rollup';
 
 import pkg from './package.json';
 
-const babelRuntimeVersion = pkg.dependencies['@babel/runtime-corejs3'].replace(
-  /^[^0-9]*/,
-  ''
-);
-
-// my-name转化为MyName
-export const toPascalCase = (input: string): string => {
-  input.replace(input[0], input[0].toUpperCase());
-  return input.replace(/-(\w)/g, function (all, letter) {
-    return letter.toUpperCase();
-  });
-};
-
 console.log(`读取了: ${__filename.slice(__dirname.length + 1)}`);
 
-const allDep = [...Object.keys(pkg.dependencies || {})].map((name) =>
-  RegExp(`^${name}($|/)`)
-); // 在打包esm和cjs的时候，排除所有依赖，让上层应用去处理（如果不排除就会有重复的polyfill）
+const babelRuntimeVersion = pkg.devDependencies[
+  '@babel/runtime-corejs3'
+].replace(/^[^0-9]*/, '');
+
+const allDep = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.devDependencies || {}),
+].map((name) => RegExp(`^${name}($|/)`)); // 在打包esm和cjs的时候，排除所有依赖，让上层应用去处理（如果不排除就会有重复的polyfill）
 
 export default defineConfig([
+  // esm
   {
     input: './src/index.js',
     output: {
@@ -98,13 +91,17 @@ export default defineConfig([
          * babelHelpers,建议显式配置此选项（即使使用其默认值）
          * runtime: 您应该使用此功能，尤其是在使用汇总构建库时，它结合external使用
          * bundled: 如果您希望生成的捆绑包包含这些帮助程序（每个最多一份），您应该使用它。特别是在捆绑应用程序代码时很有用
-         * 在打包esm和cjs时,使用runtime,并且配合external;在打包umd时,使用bundled,并且不要用external
+         * 如果babelHelpers设置成bundled，@babel/plugin-transform-runtime的helpers得设置false！
+         * 如果babelHelpers设置成runtime，@babel/plugin-transform-runtime的helpers得设置true！
+         * 在打包esm和cjs时,使用runtime,并且配合external;在打包umd时,使用bundled,并且不要用external,如果打包umd时使
+         * 用了runtime但是没有配置external，会导致打包重复的polyfill，虽然打包的时候不报错，但是引入包使用的时候会报错
          */
         // babelHelpers: 'bundled', // 默认bundled,可选:"bundled" | "runtime" | "inline" | "external" | undefined
         babelHelpers: 'runtime', // 默认bundled,可选:"bundled" | "runtime" | "inline" | "external" | undefined
       }),
     ],
   },
+  // cjs
   {
     input: './src/index.js',
     output: {
@@ -187,7 +184,10 @@ export default defineConfig([
          * babelHelpers,建议显式配置此选项（即使使用其默认值）
          * runtime: 您应该使用此功能，尤其是在使用汇总构建库时，它结合external使用
          * bundled: 如果您希望生成的捆绑包包含这些帮助程序（每个最多一份），您应该使用它。特别是在捆绑应用程序代码时很有用
-         * 在打包esm和cjs时,使用runtime,并且配合external;在打包umd时,使用bundled,并且不要用external
+         * 如果babelHelpers设置成bundled，@babel/plugin-transform-runtime的helpers得设置false！
+         * 如果babelHelpers设置成runtime，@babel/plugin-transform-runtime的helpers得设置true！
+         * 在打包esm和cjs时,使用runtime,并且配合external;在打包umd时,使用bundled,并且不要用external,如果打包umd时使
+         * 用了runtime但是没有配置external，会导致打包重复的polyfill，虽然打包的时候不报错，但是引入包使用的时候会报错
          */
         // babelHelpers: 'bundled', // 默认bundled,可选:"bundled" | "runtime" | "inline" | "external" | undefined
         babelHelpers: 'runtime', // 默认bundled,可选:"bundled" | "runtime" | "inline" | "external" | undefined
