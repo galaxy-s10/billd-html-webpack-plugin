@@ -1,6 +1,6 @@
 {
   "name": "billd-html-webpack-plugin",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "给你的项目注入构建信息~",
   "keywords": [
     "billd",

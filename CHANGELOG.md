@@ -1,3 +1,20 @@
+## [0.0.11](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.10...v0.0.11) (2022-12-03)
+
+
+### ci
+
+* eslint ([2573fed](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/2573fed8e42c893d44490ec814729e318f93fa78))
+* husky钩子;.gitattributes ([7bb19f8](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/7bb19f8b86b3e2bab5adf05ab324f763c3f0c510))
+* rollup ([9e88294](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/9e8829430d7af591671e4466ec0f889018c31682))
+
+### fix
+
+* 错别字 ([a375f43](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/a375f43b35c57f952fce894ec4785272abfdb498))
+* 去除yarn ([4d5fa67](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/4d5fa678084e808d997bfde9ea1f8966e738738b))
+* 删除无用文件 ([4c96ba8](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/4c96ba89a8eeb6d9df0f6a98132fc426a3abdb26))
+
+
+
 ## [0.0.10](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.9...v0.0.10) (2022-12-01)
 
 
