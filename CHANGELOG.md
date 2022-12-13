@@ -1,3 +1,19 @@
+## [0.0.12](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.11...v0.0.12) (2022-12-13)
+
+
+### feat
+
+* 添加显示git分支 ([e729fda](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/e729fda3673398ca101f5fe39803b823428f860d))
+
+### fix
+
+* 更新依赖 ([386031a](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/386031abf1c3c63d9a458a1c5e8b5c0d1a3c5323))
+* 更新lock ([9429297](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/94292970120fb4ed98686f43d30b8062c04fbf8d))
+* 删除无用依赖 ([3912057](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/39120570152eb5561c820aa2ef65e99f0b640e50))
+* 修改注释 ([427920f](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/427920f4ce8a2f4fea404c742bb03ee6ac0150a4))
+
+
+
 ## [0.0.11](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.10...v0.0.11) (2022-12-03)
 
 
