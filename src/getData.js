@@ -5,26 +5,31 @@ import path from 'path';
 import { version as BilldHtmlWebpackPluginVersion } from '../package.json';
 
 let commitHash;
-let commitUserName;
-let commitDate;
-let commitMessage;
+let commitBranch;
+let committerName;
+let committerEmail;
+let committerDate;
+let commitSubject;
 let pkg = {
   name: '',
   version: '',
   repository: '',
 };
 
+// https://git-scm.com/docs/git-show
 try {
-  // commit哈希
+  // commit hash
   commitHash = execSync('git show -s --format=%H').toString().trim();
-  // commit用户名
-  commitUserName = execSync('git show -s --format=%cn').toString().trim();
-  // commit日期
-  commitDate = new Date(
-    execSync(`git show -s --format=%cd`).toString()
-  ).toLocaleString();
-  // commit消息
-  commitMessage = execSync('git show -s --format=%s').toString().trim();
+  // commit branch
+  commitBranch = execSync('git branch --show-current').toString().trim();
+  // committer name
+  committerName = execSync('git show -s --format=%cn').toString().trim();
+  // committer email
+  committerEmail = execSync('git show -s --format=%ce').toString().trim();
+  // committer date
+  committerDate = execSync(`git show -s --format=%ci`).toString().trim();
+  // subject
+  commitSubject = execSync('git show -s --format=%s').toString().trim();
 } catch (error) {
   console.log(error);
 }
@@ -53,14 +58,16 @@ var log = (title, value) => {
   );
 };
 
-log('项目名称:', {pkgName});
-log('项目版本:', {pkgVersion});
-log('项目仓库:', {pkgRepository});
-log('最后构建:', {lastBuild});
-log('git提交用户:', {commitUserName});
-log('git提交日期:', {commitDate});
-log('git提交信息:', {commitMessage});
+log('pkg名称:', {pkgName});
+log('pkg版本:', {pkgVersion});
+log('pkg仓库:', {pkgRepository});
+log('git提交主题:', {commitSubject});
+log('git提交分支:', {commitBranch});
+log('git提交日期:', {committerDate});
 log('git提交哈希:', {commitHash});
+log('git提交者名字:', {committerName});
+log('git提交者邮箱:', {committerEmail});
+log('最后构建日期:', {lastBuildDate});
 log('Powered by:', 'billd-html-webpack-plugin v${BilldHtmlWebpackPluginVersion}');
 log('billd-html-webpack-plugin:', 'https://www.npmjs.com/package/billd-html-webpack-plugin');
 })();
@@ -78,9 +85,11 @@ export const info = replaceKeyFromValue(templateStr.toString(), {
   pkgName: JSON.stringify(pkgName),
   pkgVersion: JSON.stringify(pkgVersion),
   pkgRepository: JSON.stringify(pkgRepository),
-  lastBuild: JSON.stringify(new Date().toLocaleString()),
-  commitDate: JSON.stringify(commitDate),
+  commitSubject: JSON.stringify(commitSubject),
+  commitBranch: JSON.stringify(commitBranch),
+  committerDate: JSON.stringify(committerDate),
   commitHash: JSON.stringify(commitHash),
-  commitMessage: JSON.stringify(commitMessage),
-  commitUserName: JSON.stringify(commitUserName),
+  committerName: JSON.stringify(committerName),
+  committerEmail: JSON.stringify(committerEmail),
+  lastBuildDate: JSON.stringify(new Date().toLocaleString()),
 });
