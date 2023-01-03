@@ -81,15 +81,21 @@ const replaceKeyFromValue = (str, obj) => {
   return res;
 };
 
-export const info = replaceKeyFromValue(templateStr.toString(), {
-  pkgName: JSON.stringify(pkgName),
-  pkgVersion: JSON.stringify(pkgVersion),
-  pkgRepository: JSON.stringify(pkgRepository),
-  commitSubject: JSON.stringify(commitSubject),
-  commitBranch: JSON.stringify(commitBranch),
-  committerDate: JSON.stringify(committerDate),
-  commitHash: JSON.stringify(commitHash),
-  committerName: JSON.stringify(committerName),
-  committerEmail: JSON.stringify(committerEmail),
-  lastBuildDate: JSON.stringify(new Date().toLocaleString()),
-});
+export const logInfo = (log) => {
+  const logOptions = {
+    pkgName: JSON.stringify(pkgName),
+    pkgVersion: JSON.stringify(pkgVersion),
+    pkgRepository: JSON.stringify(pkgRepository),
+    commitSubject: JSON.stringify(commitSubject),
+    commitBranch: JSON.stringify(commitBranch),
+    committerDate: JSON.stringify(committerDate),
+    commitHash: JSON.stringify(commitHash),
+    committerName: JSON.stringify(committerName),
+    committerEmail: JSON.stringify(committerEmail),
+    lastBuildDate: JSON.stringify(new Date().toLocaleString()),
+  };
+  Object.keys(logOptions).forEach((item) => {
+    logOptions[item] = log[item] ? logOptions[item] : JSON.stringify('-');
+  });
+  return replaceKeyFromValue(templateStr.toString(), logOptions);
+};

@@ -1,9 +1,9 @@
 import webpack from 'webpack';
 
-import { info } from './getData';
+import { logInfo } from './getData';
 
 class PluginApply {
-  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV }) {
+  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV, log }) {
     try {
       compiler.hooks.compilation.tap(pluginName, (compilation) => {
         compilation.hooks.processAssets.tapAsync(
@@ -18,7 +18,7 @@ class PluginApply {
                 // eslint-disable-next-line
                 const str = source._value.replace(
                   '</head>',
-                  `<script>${info}</script></head>`
+                  `<script>${logInfo(log)}</script></head>`
                 );
                 // eslint-disable-next-line
                 source._value = str;

@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import nodePath from 'path';
 
-import { info } from './getData';
+import { logInfo } from './getData';
 
 class PluginApply {
   clientReg = /\/client\.js$/;
@@ -10,8 +10,9 @@ class PluginApply {
 
   arr = [];
 
-  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV }) {
+  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV, log }) {
     try {
+      const info = logInfo(log);
       const isDev = NODE_ENV === 'development';
       if (!isDev) {
         compiler.hooks.entryOption.tap(pluginName, (context, entry) => {

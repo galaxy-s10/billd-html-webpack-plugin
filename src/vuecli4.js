@@ -1,7 +1,7 @@
-import { info } from './getData';
+import { logInfo } from './getData';
 
 class PluginApply {
-  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV }) {
+  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV, log }) {
     try {
       compiler.hooks.emit.tap(pluginName, (compilation) => {
         // [DEP_WEBPACK_COMPILATION_ASSETS] DeprecationWarning: Compilation.assets will be frozen in future, all modifications are deprecated.
@@ -11,7 +11,7 @@ class PluginApply {
           if (data === 'index.html') {
             const str = content.replace(
               '</head>',
-              `<script>${info}</script></head>`
+              `<script>${logInfo(log)}</script></head>`
             );
             compilation.assets[data] = {
               source() {

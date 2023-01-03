@@ -49,6 +49,30 @@ npm i billd-html-webpack-plugin --save-dev
 
 # 使用
 
+## 覆盖默认打印配置
+
+```js
+let log = {
+  pkgName: true, // pkg名称
+  pkgVersion: true, // pkg版本
+  pkgRepository: true, // pkg仓库
+  commitSubject: true, // git提交主题
+  commitBranch: true, // git提交分支
+  committerDate: true, // git提交日期
+  commitHash: true, // git提交哈希
+  committerName: true, // git提交者名字
+  committerEmail: true, // git提交者邮箱
+  lastBuildDate: true, // 最后构建日期
+};
+new BilldHtmlWebpackPlugin({
+  nuxt2: true,
+  log: {
+    pkgRepository: false, // 不显示pkg仓库
+    commitSubject: false, // 不显示git提交主题
+  },
+});
+```
+
 ## nuxt2
 
 nuxt.config.js
