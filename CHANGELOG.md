@@ -1,3 +1,12 @@
+## [0.0.13](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.12...v0.0.13) (2023-01-03)
+
+
+### feat
+
+* 新增log选项 ([9e242a9](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/9e242a9574ef16aa9f1670187dbfedd50b4b2349))
+
+
+
 ## [0.0.12](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.11...v0.0.12) (2022-12-13)
 
 
