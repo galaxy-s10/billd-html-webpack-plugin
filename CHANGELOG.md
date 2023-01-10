@@ -1,3 +1,12 @@
+## [0.0.14](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.13...v0.0.14) (2023-01-10)
+
+
+### feat
+
+* 添加logData ([e530fc6](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/e530fc645da9e51c8f4ca522e0040d097d4cdaec))
+
+
+
 ## [0.0.13](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.12...v0.0.13) (2023-01-03)
 
 
