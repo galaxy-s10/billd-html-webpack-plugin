@@ -1,3 +1,6 @@
+/** @typedef {import("webpack/lib/Compiler.js")} WebpackCompiler */
+/** @typedef {import("webpack/lib/Compilation.js")} WebpackCompilation */
+
 import { readFileSync, writeFileSync } from 'fs';
 import nodePath from 'path';
 
@@ -10,7 +13,10 @@ class PluginApply {
 
   arr = [];
 
-  constructor(compiler, { pluginName, NODE_ENV = process.env.NODE_ENV, log }) {
+  /**
+   * @param {WebpackCompiler} compiler
+   */
+  constructor(compiler, { pluginName, log, NODE_ENV = process.env.NODE_ENV }) {
     try {
       const info = logInfo(log);
       const isDev = NODE_ENV === 'development';
@@ -58,7 +64,7 @@ class PluginApply {
         compiler.hooks.emit.tap(pluginName, (compilation) => {
           Object.keys(compilation.assets).forEach((name) => {
             if (name === 'app.js') {
-              //   获取之前的内容
+              // 获取之前的内容
               const contens = compilation.assets[name].source();
               const str = info + contens;
               compilation.assets[name] = {

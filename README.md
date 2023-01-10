@@ -24,13 +24,13 @@
 
 # 简介
 
-一个给你的项目注入构建信息的 webpack 插件，兼容 next12、nuxt2、vuecli4、vuecli5
+一个给你的项目注入构建信息的 webpack 插件，兼容 nuxt2、vuecli4、vuecli5、next12、webpack5
 
 > vuecli4/5 都是只支持默认的单页应用，如果你的 vuecli 配置了多页应用，可能会不生效！
 
-## 效果
+# 效果
 
-![https://resource.hsslive.cn/image/6f3614e5ae7d1e47da7dc0072373887a.jpeg](https://resource.hsslive.cn/image/6f3614e5ae7d1e47da7dc0072373887a.jpeg)
+![https://resource.hsslive.cn/image/b1c7975436bfbe9a79ffe862a31c8440.webp](https://resource.hsslive.cn/image/b1c7975436bfbe9a79ffe862a31c8440.webp)
 
 > 从控制台可以看到，打印了当前项目的 git 信息以及最后部署时间，非常人性化，再也不用担心部署的代码是不是最新的了~
 
@@ -49,30 +49,6 @@ npm i billd-html-webpack-plugin --save-dev
 
 # 使用
 
-## 覆盖默认打印配置
-
-```js
-let log = {
-  pkgName: true, // pkg名称
-  pkgVersion: true, // pkg版本
-  pkgRepository: true, // pkg仓库
-  commitSubject: true, // git提交主题
-  commitBranch: true, // git提交分支
-  committerDate: true, // git提交日期
-  commitHash: true, // git提交哈希
-  committerName: true, // git提交者名字
-  committerEmail: true, // git提交者邮箱
-  lastBuildDate: true, // 最后构建日期
-};
-new BilldHtmlWebpackPlugin({
-  nuxt2: true,
-  log: {
-    pkgRepository: false, // 不显示pkg仓库
-    commitSubject: false, // 不显示git提交主题
-  },
-});
-```
-
 ## nuxt2
 
 nuxt.config.js
@@ -85,10 +61,47 @@ export default {
   build: {
     plugins: [
       // ...
-      new BilldHtmlWebpackPlugin({ nuxt2: true }),
+      new BilldHtmlWebpackPlugin({ env: 'nuxt2' }),
     ],
   },
 };
+```
+
+## vuecli4
+
+vue.config.js
+
+```js
+const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+
+module.exports = {
+  // ...
+  chainWebpack: (config) => {
+    // ...
+    config
+      .plugin('billd-html-webpack-plugin')
+      .use(BilldHtmlWebpackPlugin, [{ env: 'vuecli4' }]);
+  },
+};
+```
+
+## vuecli5
+
+vue.config.js
+
+```js
+const { defineConfig } = require('@vue/cli-service');
+const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+
+module.exports = defineConfig({
+  // ...
+  chainWebpack: (config) => {
+    // ...
+    config
+      .plugin('billd-html-webpack-plugin')
+      .use(BilldHtmlWebpackPlugin, [{ env: 'vuecli5' }]);
+  },
+});
 ```
 
 ## next12
@@ -104,54 +117,13 @@ const nextConfig = {
     config.plugins = [
       ...config.plugins,
       // ...
-      new BilldHtmlWebpackPlugin({ next12: true }),
+      new BilldHtmlWebpackPlugin({ env: 'next12' }),
     ];
     return config;
   },
 };
 
 module.exports = nextConfig;
-```
-
-## vuecli5
-
-vue.config.js
-
-```js
-const { defineConfig } = require('@vue/cli-service');
-const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
-
-module.exports = defineConfig({
-  // ...
-  chainWebpack: (config) => {
-    // ...
-    config.plugin('billd-html-webpack-plugin').use(BilldHtmlWebpackPlugin, [
-      {
-        vuecli5: true,
-      },
-    ]);
-  },
-});
-```
-
-## vuecli4
-
-vue.config.js
-
-```js
-const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
-
-module.exports = {
-  // ...
-  chainWebpack: (config) => {
-    // ...
-    config.plugin('billd-html-webpack-plugin').use(BilldHtmlWebpackPlugin, [
-      {
-        vuecli4: true,
-      },
-    ]);
-  },
-};
 ```
 
 ## webpack5
@@ -165,10 +137,66 @@ module.exports = {
   // ...
   plugins: [
     // ...
-    new BilldHtmlWebpackPlugin({ webpack5: true }),
+    new BilldHtmlWebpackPlugin({ env: 'webpack5' }),
   ],
 };
 ```
+
+# 配置
+
+## 打印选项
+
+```js
+import BilldHtmlWebpackPlugin from 'billd-html-webpack-plugin';
+
+new BilldHtmlWebpackPlugin({
+  env: 'nuxt2',
+  log: {
+    pkgName: true, // pkg名称
+    pkgVersion: true, // pkg版本
+    pkgRepository: false, // 不显示pkg仓库
+    commitSubject: false, // 不显示git提交主题
+    commitBranch: true, // git提交分支
+    committerDate: true, // git提交日期
+    commitHash: true, // git提交哈希
+    committerName: true, // git提交者名字
+    committerEmail: true, // git提交者邮箱
+    lastBuildDate: true, // 最后构建日期
+  },
+});
+```
+
+## 获取打印数据
+
+```js
+import { logData } from 'billd-html-webpack-plugin';
+
+console.log(
+  logData({
+    pkgRepository: false, // 不显示pkg仓库
+  })
+);
+// {
+//   pkgName: 'xxxxx',
+//   pkgVersion: '0.0.1',
+//   pkgRepository: '-',
+//   commitSubject: 'xxxxxx',
+//   commitBranch: 'feat-webrtc',
+//   committerDate: '2023-01-06 20:58:03 +0800',
+//   commitHash: 'dsggggsdgdsgsdgs',
+//   committerName: 'shuisheng',
+//   committerEmail: '2274751790@qq.com',
+//   lastBuildDate: '2023/1/10 11:11:56',
+// };
+```
+
+# 引用
+
+- [https://git-scm.com/docs/git-show](https://git-scm.com/docs/git-show)
+- [https://github.com/jantimon/html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)
+- [https://webpack.docschina.org/api/compiler-hooks/](https://webpack.docschina.org/api/compiler-hooks/)
+- [https://webpack.docschina.org/api/compilation-hooks/](https://webpack.docschina.org/api/compilation-hooks/)
+- [https://webpack.docschina.org/api/compilation-hooks/#processassets](https://webpack.docschina.org/api/compilation-hooks/#processassets)
 
 # 源码
 

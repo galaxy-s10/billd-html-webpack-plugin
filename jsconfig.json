@@ -1,0 +1,9 @@
+{
+  // https://code.visualstudio.com/docs/languages/jsconfig
+  "compilerOptions": {
+    "checkJs": true,
+    "resolveJsonModule": true
+    // "allowJs": true
+  },
+  "exclude": ["node_modules", "dist"]
+}
