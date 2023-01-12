@@ -168,6 +168,8 @@ new BilldHtmlWebpackPlugin({
 
 ## 获取打印数据
 
+> 注意：只支持在node环境执行
+
 ```js
 import { logData } from 'billd-html-webpack-plugin';
 

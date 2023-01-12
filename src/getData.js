@@ -83,29 +83,37 @@ const replaceKeyFromValue = (str, obj) => {
 };
 
 const defaultLogData = {
-  pkgName: JSON.stringify(pkgName),
-  pkgVersion: JSON.stringify(pkgVersion),
-  pkgRepository: JSON.stringify(pkgRepository),
-  commitSubject: JSON.stringify(commitSubject),
-  commitBranch: JSON.stringify(commitBranch),
-  committerDate: JSON.stringify(committerDate),
-  commitHash: JSON.stringify(commitHash),
-  committerName: JSON.stringify(committerName),
-  committerEmail: JSON.stringify(committerEmail),
-  lastBuildDate: JSON.stringify(new Date().toLocaleString()),
+  pkgName,
+  pkgVersion,
+  pkgRepository,
+  commitSubject,
+  commitBranch,
+  committerDate,
+  commitHash,
+  committerName,
+  committerEmail,
+  lastBuildDate: new Date().toLocaleString(),
 };
 
 export const logData = (log) => {
   const tmpData = JSON.parse(JSON.stringify(defaultLogData));
   if (log) {
     Object.keys(tmpData).forEach((item) => {
-      tmpData[item] = log[item] === false ? JSON.stringify('-') : tmpData[item];
+      tmpData[item] = log[item] === false ? '-' : tmpData[item];
     });
   }
   return tmpData;
 };
 
 export const logInfo = (log) => {
-  const data = logData(log);
-  return replaceKeyFromValue(templateStr.toString(), data);
+  const tmpData = JSON.parse(JSON.stringify(defaultLogData));
+  if (log) {
+    Object.keys(tmpData).forEach((item) => {
+      tmpData[item] =
+        log[item] === false
+          ? JSON.stringify('-')
+          : JSON.stringify(tmpData[item]);
+    });
+  }
+  return replaceKeyFromValue(templateStr.toString(), tmpData);
 };
