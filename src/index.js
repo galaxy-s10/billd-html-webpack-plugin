@@ -1,6 +1,7 @@
 /** @typedef {import("webpack/lib/Compiler.js")} WebpackCompiler */
 /** @typedef {import("../types/index").BilldHtmlWebpackPluginOption} PluginOption */
 
+import { version as __VERSION__ } from '../package.json';
 import Next12Apply from './next12';
 import Nuxt2Apply from './nuxt2';
 import Vuecli4Apply from './vuecli4';
@@ -81,3 +82,4 @@ class BilldHtmlWebpackPlugin {
 
 export { logData } from './getData';
 export default BilldHtmlWebpackPlugin;
+export const version = __VERSION__;
