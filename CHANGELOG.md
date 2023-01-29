@@ -1,3 +1,12 @@
+## [0.0.16](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.15...v0.0.16) (2023-01-29)
+
+
+### feat
+
+* 添加版本 ([5907a13](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/5907a1307d572c6a962494692fe472aaf8107ea0))
+
+
+
 ## [0.0.15](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.14...v0.0.15) (2023-01-12)
 
 
