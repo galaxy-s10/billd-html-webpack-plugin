@@ -1,3 +1,12 @@
+## [0.0.18](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.17...v0.0.18) (2023-01-30)
+
+
+### fix
+
+* 修复logdata ([c7a78ed](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/c7a78ed52443c49f886313ba849a6e8752597a82))
+
+
+
 ## [0.0.17](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.16...v0.0.17) (2023-01-30)
 
 
