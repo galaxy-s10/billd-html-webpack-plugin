@@ -1,3 +1,12 @@
+## [0.0.17](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.16...v0.0.17) (2023-01-30)
+
+
+### feat
+
+* logData重新读取pkg ([004f1f0](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/004f1f0d1ee3a60c4699c72104a822d5734b7b3c))
+
+
+
 ## [0.0.16](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.15...v0.0.16) (2023-01-29)
 
 
