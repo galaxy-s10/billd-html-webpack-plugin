@@ -4,23 +4,16 @@ import path from 'path';
 
 import { version as BilldHtmlWebpackPluginVersion } from '../package.json';
 
-let commitHash;
-let commitBranch;
-let committerName;
-let committerEmail;
-let committerDate;
-let commitSubject;
-
 const defaultLogData = {
   pkgName: '',
   pkgVersion: '',
   pkgRepository: '',
-  commitSubject,
-  commitBranch,
-  committerDate,
-  commitHash,
-  committerName,
-  committerEmail,
+  commitSubject: '',
+  commitBranch: '',
+  committerDate: '',
+  commitHash: '',
+  committerName: '',
+  committerEmail: '',
   lastBuildDate: new Date().toLocaleString(),
 };
 
@@ -53,17 +46,29 @@ log('billd-html-webpack-plugin:', 'https://www.npmjs.com/package/billd-html-webp
 // https://git-scm.com/docs/git-show
 try {
   // commit hash
-  commitHash = execSync('git show -s --format=%H').toString().trim();
+  defaultLogData.commitHash = execSync('git show -s --format=%H')
+    .toString()
+    .trim();
   // commit branch
-  commitBranch = execSync('git branch --show-current').toString().trim();
+  defaultLogData.commitBranch = execSync('git branch --show-current')
+    .toString()
+    .trim();
   // committer name
-  committerName = execSync('git show -s --format=%cn').toString().trim();
+  defaultLogData.committerName = execSync('git show -s --format=%cn')
+    .toString()
+    .trim();
   // committer email
-  committerEmail = execSync('git show -s --format=%ce').toString().trim();
+  defaultLogData.committerEmail = execSync('git show -s --format=%ce')
+    .toString()
+    .trim();
   // committer date
-  committerDate = execSync(`git show -s --format=%ci`).toString().trim();
+  defaultLogData.committerDate = execSync(`git show -s --format=%ci`)
+    .toString()
+    .trim();
   // subject
-  commitSubject = execSync('git show -s --format=%s').toString().trim();
+  defaultLogData.commitSubject = execSync('git show -s --format=%s')
+    .toString()
+    .trim();
 } catch (error) {
   console.log(error);
 }
