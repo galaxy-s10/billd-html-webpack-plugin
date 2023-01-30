@@ -10,43 +10,19 @@ let committerName;
 let committerEmail;
 let committerDate;
 let commitSubject;
-let pkg = {
-  name: '',
-  version: '',
-  repository: '',
+
+const defaultLogData = {
+  pkgName: '',
+  pkgVersion: '',
+  pkgRepository: '',
+  commitSubject,
+  commitBranch,
+  committerDate,
+  commitHash,
+  committerName,
+  committerEmail,
+  lastBuildDate: new Date().toLocaleString(),
 };
-
-// https://git-scm.com/docs/git-show
-try {
-  // commit hash
-  commitHash = execSync('git show -s --format=%H').toString().trim();
-  // commit branch
-  commitBranch = execSync('git branch --show-current').toString().trim();
-  // committer name
-  committerName = execSync('git show -s --format=%cn').toString().trim();
-  // committer email
-  committerEmail = execSync('git show -s --format=%ce').toString().trim();
-  // committer date
-  committerDate = execSync(`git show -s --format=%ci`).toString().trim();
-  // subject
-  commitSubject = execSync('git show -s --format=%s').toString().trim();
-} catch (error) {
-  console.log(error);
-}
-
-try {
-  pkg = JSON.parse(
-    readFileSync(path.join(process.cwd(), 'package.json')).toString()
-  );
-} catch (error) {
-  console.log(error);
-}
-
-const pkgName = pkg.name;
-const pkgVersion = pkg.version;
-const pkgRepository =
-  // @ts-ignore
-  typeof pkg.repository === 'object' ? pkg.repository.url : pkg.repository;
 
 const templateStr = `
 ;(function(){
@@ -74,6 +50,41 @@ log('billd-html-webpack-plugin:', 'https://www.npmjs.com/package/billd-html-webp
 })();
 `;
 
+// https://git-scm.com/docs/git-show
+try {
+  // commit hash
+  commitHash = execSync('git show -s --format=%H').toString().trim();
+  // commit branch
+  commitBranch = execSync('git branch --show-current').toString().trim();
+  // committer name
+  committerName = execSync('git show -s --format=%cn').toString().trim();
+  // committer email
+  committerEmail = execSync('git show -s --format=%ce').toString().trim();
+  // committer date
+  committerDate = execSync(`git show -s --format=%ci`).toString().trim();
+  // subject
+  commitSubject = execSync('git show -s --format=%s').toString().trim();
+} catch (error) {
+  console.log(error);
+}
+
+function updateDefaultLogData() {
+  try {
+    const pkg = JSON.parse(
+      readFileSync(path.join(process.cwd(), 'package.json')).toString()
+    );
+    defaultLogData.pkgName = pkg.name;
+    defaultLogData.pkgVersion = pkg.version;
+    defaultLogData.pkgRepository =
+      // @ts-ignore
+      typeof pkg.repository === 'object' ? pkg.repository.url : pkg.repository;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+updateDefaultLogData();
+
 const replaceKeyFromValue = (str, obj) => {
   let res = str;
   Object.keys(obj).forEach((v) => {
@@ -82,20 +93,8 @@ const replaceKeyFromValue = (str, obj) => {
   return res;
 };
 
-const defaultLogData = {
-  pkgName,
-  pkgVersion,
-  pkgRepository,
-  commitSubject,
-  commitBranch,
-  committerDate,
-  commitHash,
-  committerName,
-  committerEmail,
-  lastBuildDate: new Date().toLocaleString(),
-};
-
 export const logData = (log) => {
+  updateDefaultLogData();
   const tmpData = JSON.parse(JSON.stringify(defaultLogData));
   if (log) {
     Object.keys(tmpData).forEach((item) => {
