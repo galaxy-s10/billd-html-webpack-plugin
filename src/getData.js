@@ -110,6 +110,7 @@ export const logData = (log) => {
 };
 
 export const logInfo = (log) => {
+  updateDefaultLogData();
   const tmpData = JSON.parse(JSON.stringify(defaultLogData));
   if (log) {
     Object.keys(tmpData).forEach((item) => {
