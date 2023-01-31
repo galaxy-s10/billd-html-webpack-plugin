@@ -43,46 +43,44 @@ log('billd-html-webpack-plugin:', 'https://www.npmjs.com/package/billd-html-webp
 })();
 `;
 
-// https://git-scm.com/docs/git-show
-try {
-  // commit hash
-  defaultLogData.commitHash = execSync('git show -s --format=%H')
-    .toString()
-    .trim();
-  // commit branch
-  defaultLogData.commitBranch = execSync('git branch --show-current')
-    .toString()
-    .trim();
-  // committer name
-  defaultLogData.committerName = execSync('git show -s --format=%cn')
-    .toString()
-    .trim();
-  // committer email
-  defaultLogData.committerEmail = execSync('git show -s --format=%ce')
-    .toString()
-    .trim();
-  // committer date
-  defaultLogData.committerDate = execSync(`git show -s --format=%ci`)
-    .toString()
-    .trim();
-  // subject
-  defaultLogData.commitSubject = execSync('git show -s --format=%s')
-    .toString()
-    .trim();
-} catch (error) {
-  console.log(error);
-}
-
 function updateDefaultLogData() {
+  // https://git-scm.com/docs/git-show
   try {
+    // commit hash
+    defaultLogData.commitHash = execSync('git show -s --format=%H')
+      .toString()
+      .trim();
+    // commit branch
+    defaultLogData.commitBranch = execSync('git branch --show-current')
+      .toString()
+      .trim();
+    // committer name
+    defaultLogData.committerName = execSync('git show -s --format=%cn')
+      .toString()
+      .trim();
+    // committer email
+    defaultLogData.committerEmail = execSync('git show -s --format=%ce')
+      .toString()
+      .trim();
+    // committer date
+    defaultLogData.committerDate = execSync(`git show -s --format=%ci`)
+      .toString()
+      .trim();
+    // subject
+    defaultLogData.commitSubject = execSync('git show -s --format=%s')
+      .toString()
+      .trim();
+
     const pkg = JSON.parse(
       readFileSync(path.join(process.cwd(), 'package.json')).toString()
     );
-    defaultLogData.pkgName = pkg.name;
-    defaultLogData.pkgVersion = pkg.version;
+    defaultLogData.pkgName = pkg?.name;
+    defaultLogData.pkgVersion = pkg?.version;
     defaultLogData.pkgRepository =
       // @ts-ignore
-      typeof pkg.repository === 'object' ? pkg.repository.url : pkg.repository;
+      typeof pkg?.repository === 'object'
+        ? pkg?.repository?.url
+        : pkg?.repository;
   } catch (error) {
     console.log(error);
   }
