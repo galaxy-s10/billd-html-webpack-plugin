@@ -115,7 +115,7 @@ export default defineConfig([
        * 别人通过cjs导入的话，就得const BilldHtmlWebpackPlugin = require("billd-html-webpack-plugin").default;才能拿到默认导出；如果不使用exports: 'named'，
        * 默认会生成：module.exports = BilldHtmlWebpackPlugin;别人通过cjs导入的话，就正常的const BilldHtmlWebpackPlugin = require("billd-html-webpack-plugin");即可
        */
-      // exports: 'named', // billd-html-webpack-plugin只有一个默认导出，因此不需要设置exports: 'named'
+      exports: 'named', // billd-html-webpack-plugin默认导出和具名导出一起用了，因此需要设置exports: 'named'
     },
     external: allDep,
     plugins: [

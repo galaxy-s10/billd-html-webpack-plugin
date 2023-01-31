@@ -72,7 +72,7 @@ export default {
 vue.config.js
 
 ```js
-const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin').default;
 
 module.exports = {
   // ...
@@ -91,7 +91,7 @@ vue.config.js
 
 ```js
 const { defineConfig } = require('@vue/cli-service');
-const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin').default;
 
 module.exports = defineConfig({
   // ...
@@ -109,7 +109,7 @@ module.exports = defineConfig({
 next.config.js
 
 ```js
-const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin').default;
 
 const nextConfig = {
   // ...
@@ -131,7 +131,7 @@ module.exports = nextConfig;
 webpack.config.js
 
 ```js
-const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin');
+const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin').default;
 
 module.exports = {
   // ...
@@ -168,7 +168,7 @@ new BilldHtmlWebpackPlugin({
 
 ## 获取打印数据
 
-> 注意：只支持在node环境执行
+> 注意：只支持在 node 环境执行
 
 ```js
 import { logData } from 'billd-html-webpack-plugin';
