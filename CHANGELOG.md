@@ -1,3 +1,12 @@
+## [0.0.20](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.19...v0.0.20) (2023-01-31)
+
+
+### fix
+
+* 默认打印 ([bb03c13](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/bb03c1341220a8c582caf3846a521524d246b185))
+
+
+
 ## [0.0.19](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.18...v0.0.19) (2023-01-31)
 
 
