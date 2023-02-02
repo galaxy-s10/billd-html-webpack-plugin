@@ -4,6 +4,7 @@
 import { version as __VERSION__ } from '../package.json';
 import Next12Apply from './next12';
 import Nuxt2Apply from './nuxt2';
+import Nuxt3Apply from './nuxt3';
 import Vuecli4Apply from './vuecli4';
 import Vuecli5Apply from './vuecli5';
 import Webpack5Apply from './webpack5';
@@ -14,7 +15,7 @@ class BilldHtmlWebpackPlugin {
   options;
   env;
   NODE_ENV;
-  envList = ['nuxt2', 'vuecli4', 'vuecli5', 'next12', 'webpack5'];
+  envList = ['nuxt2', 'nuxt3', 'vuecli4', 'vuecli5', 'next12', 'webpack5'];
   log = {
     pkgName: true,
     pkgVersion: true,
@@ -63,6 +64,9 @@ class BilldHtmlWebpackPlugin {
     switch (this.options.env) {
       case 'nuxt2':
         new Nuxt2Apply(compiler, options);
+        break;
+      case 'nuxt3':
+        // new Nuxt3Apply(compiler, options);
         break;
       case 'vuecli4':
         new Vuecli4Apply(compiler, options);

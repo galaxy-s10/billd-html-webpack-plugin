@@ -19,7 +19,7 @@ const defaultLogData = {
 
 const templateStr = `
 ;(function(){
-var log = (title, value) => {
+var log = function (title, value) {
   console.log(
     '%c ' + title + ' %c ' + value + ' ' + '%c',
     'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
