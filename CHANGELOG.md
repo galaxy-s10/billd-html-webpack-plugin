@@ -1,3 +1,12 @@
+## [0.0.22](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.21...v0.0.22) (2023-02-02)
+
+
+### fix
+
+* 去掉模板的箭头函数 ([6e6c0ff](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/6e6c0ff06da80c25fca247f5ab0e74f3d984d04e))
+
+
+
 ## [0.0.21](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.20...v0.0.21) (2023-01-31)
 
 
