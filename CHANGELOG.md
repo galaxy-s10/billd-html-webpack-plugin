@@ -1,3 +1,12 @@
+## [0.0.23](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.22...v0.0.23) (2023-02-03)
+
+
+### feat
+
+* 匹配所有html文件 ([7ccadb6](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/7ccadb669bd300d792a6bb9bdfd5df879a73d812))
+
+
+
 ## [0.0.22](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.21...v0.0.22) (2023-02-02)
 
 
