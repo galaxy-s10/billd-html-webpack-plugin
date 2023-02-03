@@ -24,7 +24,7 @@ class PluginApply {
           },
           (assets, cb) => {
             Object.entries(assets).forEach(([pathname, source]) => {
-              if (pathname === 'index.html') {
+              if (pathname.match(/.html$/)) {
                 // eslint-disable-next-line
                 const str = source._value.replace(
                   '</head>',
