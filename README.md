@@ -129,12 +129,15 @@ module.exports = defineConfig({
 webpack.config.js
 
 ```js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin').default;
 
 module.exports = {
   // ...
   plugins: [
     // ...
+    new HtmlWebpackPlugin(),
+    // 请确保billd-html-webpack-plugin插件在html-webpack-plugin插件后面
     new BilldHtmlWebpackPlugin({ env: 'webpack4' }),
   ],
 };
@@ -145,12 +148,15 @@ module.exports = {
 webpack.config.js
 
 ```js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BilldHtmlWebpackPlugin = require('billd-html-webpack-plugin').default;
 
 module.exports = {
   // ...
   plugins: [
     // ...
+    new HtmlWebpackPlugin(),
+    // 请确保billd-html-webpack-plugin插件在html-webpack-plugin插件后面
     new BilldHtmlWebpackPlugin({ env: 'webpack5' }),
   ],
 };
