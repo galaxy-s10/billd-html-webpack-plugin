@@ -1,3 +1,12 @@
+## [0.0.27](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.26...v0.0.27) (2023-02-05)
+
+
+### docs
+
+* 更新readme ([e1fb778](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/e1fb77843a212f9ce8e6fa4a58815ca95d29dc39))
+
+
+
 ## [0.0.26](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.25...v0.0.26) (2023-02-05)
 
 
