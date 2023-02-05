@@ -1,3 +1,12 @@
+## [0.0.26](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.25...v0.0.26) (2023-02-05)
+
+
+### feat
+
+* 支持vite4 ([d467408](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/d4674085ea7a0ab447510d65c06e8a3c305b65fd))
+
+
+
 ## [0.0.25](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.24...v0.0.25) (2023-02-05)
 
 
