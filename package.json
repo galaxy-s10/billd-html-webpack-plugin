@@ -44,6 +44,7 @@
     }
   },
   "dependencies": {
+    "vite": "^4.1.1",
     "webpack": "^5.75.0"
   },
   "devDependencies": {

@@ -24,7 +24,7 @@
 
 # 简介
 
-一个给你的项目注入构建信息的 webpack 插件，兼容 nuxt2、vuecli4、vuecli5、next12、webpack5
+一个给你的项目注入构建信息的 webpack 插件，兼容 nuxt2、nuxt3、vuecli4、vuecli5、next12、webpack5
 
 # 效果
 
@@ -36,6 +36,8 @@
 
 - nuxt2、vuecli4 是基于 webpack4 的，主要是根据 compiler.hooks.emit 这个钩子，在入口文件注入项目信息然后再输出
 - next12、vuecli5 是基于 webpack5 的，主要是根据 compiler.hooks.compilation 这个钩子以及 compilation.hooks.processAssets， 对入口文件进行注入项目信息然后再输出
+- nuxt3是基于vite的，此时 `billd-html-webpack-plugin` 其实是作为一个vite插件，主要是根据transformIndexHtml这个vite插件特有的钩子，对index.html注入项目信息
+- vite，待支持~
 
 > 本质上就是给你的项目入口/所有 html 插入一串 js 代码。
 
@@ -63,6 +65,22 @@ export default {
     ],
   },
 };
+```
+
+## nuxt3
+
+```ts
+import BilldHtmlWebpackPlugin from 'billd-html-webpack-plugin';
+import { defineConfig } from 'vite';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  // ...
+  plugins: [
+    // ...
+    new BilldHtmlWebpackPlugin({ env: 'nuxt3' }).config,
+  ],
+});
 ```
 
 ## vuecli4

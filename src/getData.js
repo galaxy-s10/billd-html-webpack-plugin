@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 
 import { version as BilldHtmlWebpackPluginVersion } from '../package.json';
+import { errorLog } from './utils';
 
 const defaultLogData = {
   pkgName: '',
@@ -46,6 +47,17 @@ log('billd-html-webpack-plugin:', 'https://www.npmjs.com/package/billd-html-webp
 function updateDefaultLogData() {
   // https://git-scm.com/docs/git-show
   try {
+    const pkg = JSON.parse(
+      readFileSync(path.join(process.cwd(), 'package.json')).toString()
+    );
+    defaultLogData.pkgName = pkg?.name;
+    defaultLogData.pkgVersion = pkg?.version;
+    defaultLogData.pkgRepository =
+      // @ts-ignore
+      typeof pkg?.repository === 'object'
+        ? pkg?.repository?.url
+        : pkg?.repository;
+
     // commit hash
     defaultLogData.commitHash = execSync('git show -s --format=%H')
       .toString()
@@ -70,23 +82,10 @@ function updateDefaultLogData() {
     defaultLogData.commitSubject = execSync('git show -s --format=%s')
       .toString()
       .trim();
-
-    const pkg = JSON.parse(
-      readFileSync(path.join(process.cwd(), 'package.json')).toString()
-    );
-    defaultLogData.pkgName = pkg?.name;
-    defaultLogData.pkgVersion = pkg?.version;
-    defaultLogData.pkgRepository =
-      // @ts-ignore
-      typeof pkg?.repository === 'object'
-        ? pkg?.repository?.url
-        : pkg?.repository;
   } catch (error) {
-    console.log(error);
+    errorLog(error);
   }
 }
-
-updateDefaultLogData();
 
 const replaceKeyFromValue = (str, obj) => {
   let res = str;
