@@ -3,7 +3,7 @@
 
 import webpack from 'webpack';
 
-import { logInfo } from './getData';
+import { logInfo } from '../getData';
 
 class PluginApply {
   /**

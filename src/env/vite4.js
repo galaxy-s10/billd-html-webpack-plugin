@@ -1,6 +1,6 @@
 /** @typedef {import("vite").Plugin} Plugin */
 
-import { logInfo } from './getData';
+import { logInfo } from '../getData';
 
 class PluginConfig {
   constructor({ pluginName, log }) {

@@ -4,7 +4,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import nodePath from 'path';
 
-import { logInfo } from './getData';
+import { logInfo } from '../getData';
 
 class PluginApply {
   clientReg = /\/client\.js$/;

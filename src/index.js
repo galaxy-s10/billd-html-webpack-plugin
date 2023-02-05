@@ -2,13 +2,15 @@
 /** @typedef {import("../types/index").BilldHtmlWebpackPluginOption} PluginOption */
 
 import { version as __VERSION__ } from '../package.json';
-import Next12Apply from './next12';
-import Nuxt2Apply from './nuxt2';
-import Nuxt3Plugin from './nuxt3';
+import Next12Apply from './env/next12';
+import Nuxt2Apply from './env/nuxt2';
+import Nuxt3Plugin from './env/nuxt3';
+import Vite4Plugin from './env/vite4';
+import Vuecli4Apply from './env/vuecli4';
+import Vuecli5Apply from './env/vuecli5';
+import Webpack4Apply from './env/webpack4';
+import Webpack5Apply from './env/webpack5';
 import { errorLog } from './utils';
-import Vuecli4Apply from './vuecli4';
-import Vuecli5Apply from './vuecli5';
-import Webpack5Apply from './webpack5';
 
 class BilldHtmlWebpackPlugin {
   billdConfig = {
@@ -16,7 +18,16 @@ class BilldHtmlWebpackPlugin {
     NODE_ENV: undefined,
     options: undefined,
     env: undefined,
-    envList: ['nuxt2', 'nuxt3', 'vuecli4', 'vuecli5', 'next12', 'webpack5'],
+    envList: [
+      'nuxt2',
+      'nuxt3',
+      'vuecli4',
+      'vuecli5',
+      'webpack4',
+      'webpack5',
+      'next12',
+      'vite4',
+    ],
     log: {
       pkgName: true,
       pkgVersion: true,
@@ -55,9 +66,12 @@ class BilldHtmlWebpackPlugin {
     }
 
     this.billdConfig.options = options;
+
     try {
       if (options.env === 'nuxt3') {
         this.config = new Nuxt3Plugin(this.billdConfig);
+      } else if (options.env === 'vite4') {
+        this.config = new Vite4Plugin(this.billdConfig);
       }
     } catch (error) {
       errorLog(error);
@@ -79,11 +93,14 @@ class BilldHtmlWebpackPlugin {
         case 'vuecli5':
           new Vuecli5Apply(compiler, this.billdConfig);
           break;
-        case 'next12':
-          new Next12Apply(compiler, this.billdConfig);
+        case 'webpack4':
+          new Webpack4Apply(compiler, this.billdConfig);
           break;
         case 'webpack5':
           new Webpack5Apply(compiler, this.billdConfig);
+          break;
+        case 'next12':
+          new Next12Apply(compiler, this.billdConfig);
           break;
       }
     } catch (error) {
