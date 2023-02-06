@@ -1,3 +1,12 @@
+## [0.0.28](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.27...v0.0.28) (2023-02-06)
+
+
+### fix
+
+* nuxt3配置 ([ec23a2a](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/ec23a2a914d5d286cfce651a8b6c13700af4263b))
+
+
+
 ## [0.0.27](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.26...v0.0.27) (2023-02-05)
 
 
