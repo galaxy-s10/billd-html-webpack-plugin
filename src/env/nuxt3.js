@@ -20,7 +20,7 @@ class PluginConfig {
       },
       transform(code, id) {
         if (id.indexOf(entry) !== -1) {
-          const str1 = info + code;
+          const str1 = `if (process.client) {${info}}\n${code}`;
           return { code: str1 };
         }
       },

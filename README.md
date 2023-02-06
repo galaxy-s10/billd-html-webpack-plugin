@@ -36,8 +36,8 @@
 
 - nuxt2、vuecli4 是基于 webpack4 的，主要是根据 compiler.hooks.emit 这个钩子，在入口文件注入项目信息然后再输出
 - next12、vuecli5 是基于 webpack5 的，主要是根据 compiler.hooks.compilation 这个钩子以及 compilation.hooks.processAssets， 对入口文件进行注入项目信息然后再输出
-- nuxt3 是基于 vite 的，主要是根据 configResolved 和 transform 这两个 vite 插件特有的钩子，通过 configResolved 钩子找入口，然后使用 transform 钩子将项目信息注入到入口文件
-- vite4，主要是根据 transformIndexHtml 这个 vite 插件特有的钩子，对 index.html 注入项目信息
+- nuxt3 是基于 vite 的，主要是根据 configResolved 这个钩子（ vite 插件特有），通过 configResolved 钩子找入口，然后使用 transform 钩子（rollup 插件）将项目信息注入到入口文件
+- vite4，主要是根据 transformIndexHtml 这个钩子（vite 插件特有），对 index.html 注入项目信息
 
 > 本质上就是给你的项目入口/所有 html 插入一串 js 代码。
 
