@@ -1,3 +1,8 @@
+# [1.0.0](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.28...v1.0.0) (2023-02-21)
+
+
+
+
 ## [0.0.28](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.27...v0.0.28) (2023-02-06)
 
 
