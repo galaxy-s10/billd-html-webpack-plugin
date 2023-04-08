@@ -19,6 +19,7 @@ export interface BilldHtmlWebpackPluginOption {
     committerName: boolean;
     committerEmail: boolean;
     lastBuildDate: boolean;
+    nodeVersion: boolean;
   };
   NODE_ENV?: string;
 }

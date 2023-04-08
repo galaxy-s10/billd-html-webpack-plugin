@@ -16,6 +16,7 @@ const defaultLogData = {
   committerName: '',
   committerEmail: '',
   lastBuildDate: new Date().toLocaleString(),
+  nodeVersion: '',
 };
 
 const templateStr = `
@@ -38,11 +39,22 @@ log('git提交日期:', {committerDate});
 log('git提交哈希:', {commitHash});
 log('git提交者名字:', {committerName});
 log('git提交者邮箱:', {committerEmail});
+log('node版本:', {nodeVersion});
 log('最后构建日期:', {lastBuildDate});
 log('Powered by:', 'billd-html-webpack-plugin v${BilldHtmlWebpackPluginVersion}');
 log('billd-html-webpack-plugin:', 'https://www.npmjs.com/package/billd-html-webpack-plugin');
 })();
 `;
+
+const cmdMap = {
+  commitSubject: 'git show -s --format=%s',
+  commitBranch: 'git branch --show-current',
+  committerDate: 'git show -s --format=%ci',
+  commitHash: 'git show -s --format=%H',
+  committerName: 'git show -s --format=%cn',
+  committerEmail: 'git show -s --format=%ce',
+  nodeVersion: 'node -v',
+};
 
 function updateDefaultLogData() {
   // https://git-scm.com/docs/git-show
@@ -57,31 +69,13 @@ function updateDefaultLogData() {
       typeof pkg?.repository === 'object'
         ? pkg?.repository?.url
         : pkg?.repository;
-
-    // commit hash
-    defaultLogData.commitHash = execSync('git show -s --format=%H')
-      .toString()
-      .trim();
-    // commit branch
-    defaultLogData.commitBranch = execSync('git branch --show-current')
-      .toString()
-      .trim();
-    // committer name
-    defaultLogData.committerName = execSync('git show -s --format=%cn')
-      .toString()
-      .trim();
-    // committer email
-    defaultLogData.committerEmail = execSync('git show -s --format=%ce')
-      .toString()
-      .trim();
-    // committer date
-    defaultLogData.committerDate = execSync(`git show -s --format=%ci`)
-      .toString()
-      .trim();
-    // subject
-    defaultLogData.commitSubject = execSync('git show -s --format=%s')
-      .toString()
-      .trim();
+    Object.keys(cmdMap).forEach((key) => {
+      try {
+        defaultLogData[key] = execSync(cmdMap[key]).toString().trim();
+      } catch (error) {
+        errorLog(error);
+      }
+    });
   } catch (error) {
     errorLog(error);
   }

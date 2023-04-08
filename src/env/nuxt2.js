@@ -20,7 +20,12 @@ class PluginApply {
     if (!isDev) {
       // @ts-ignore
       compiler.hooks.entryOption.tap(pluginName, (context, entry) => {
-        this.arr = entry.app;
+        // win环境下，entry.app的值可能是：
+        // [                                                                                                                                     18:24:55
+        //   'C:/ldmnq/nuxt/node_modules/.pnpm/@nuxt+components@2.2.1/node_modules/@nuxt/components/lib/installComponents.js',
+        //   'C:\\ldmnq\\nuxt\\.nuxt\\server.js'
+        // ]
+        this.arr = entry.app.map((val) => val.replace(/\\\\/g, '/'));
       });
 
       compiler.hooks.done.tapAsync(pluginName, (compilation, callback) => {
