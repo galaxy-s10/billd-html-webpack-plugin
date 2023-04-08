@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.0.0...v1.0.1) (2023-04-08)
+
+
+### fix
+
+* nuxt2兼容win环境 ([600431e](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/600431e4031ec2ac8c7dd22be494cb3bd313b229))
+
+
+
 # [1.0.0](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v0.0.28...v1.0.0) (2023-02-21)
 
 
