@@ -25,12 +25,15 @@ class PluginApply {
           (assets, cb) => {
             Object.entries(assets).forEach(([pathname, source]) => {
               if (pathname.match(/.html$/)) {
+                // source._value有可能是一个buffer，因此需要toString()
                 // @ts-ignore
                 // eslint-disable-next-line
-                const str = source._value.replace(
-                  '</head>',
-                  `<script>${logInfo(log)}</script></head>`
-                );
+                const str = source._value
+                  .toString()
+                  .replace(
+                    '</head>',
+                    `<script>${logInfo(log)}</script></head>`
+                  );
                 // @ts-ignore
                 // eslint-disable-next-line
                 source._value = str;
