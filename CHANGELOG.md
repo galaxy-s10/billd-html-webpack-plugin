@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.0.1...v1.0.2) (2023-07-12)
+
+
+### fix
+
+* webpack5的source._value ([3e73516](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/3e73516c5fe77b9284d4050d76f5dbf99a26be15))
+
+
+
 ## [1.0.1](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.0.0...v1.0.1) (2023-04-08)
 
 
