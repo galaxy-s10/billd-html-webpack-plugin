@@ -2,6 +2,7 @@ export interface BilldHtmlWebpackPluginOption {
   env:
     | 'nuxt2'
     | 'nuxt3'
+    | 'nuxt3-6'
     | 'vuecli4'
     | 'vuecli5'
     | 'webpack4'
