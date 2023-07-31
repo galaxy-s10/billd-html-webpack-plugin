@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.0.2...v1.0.3) (2023-07-31)
+
+
+### feat
+
+* 增加nuxt3.6 ([414fcbe](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/414fcbe250c922776a18c9e1e5380941c0002b6b))
+
+
+
 ## [1.0.2](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.0.1...v1.0.2) (2023-07-12)
 
 
