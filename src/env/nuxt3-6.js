@@ -17,10 +17,15 @@ class PluginConfig {
       name: pluginName,
       configResolved(resolvedConfig) {
         // @ts-ignore
-        entry = resolvedConfig.build.rollupOptions.input.entry;
+        const str1 = resolvedConfig.build.rollupOptions.input.entry;
+        const url = str1?.split('?')[0];
+        if (url) {
+          entry = url;
+        }
       },
       transform(code, id) {
-        if (entry?.indexOf(id) !== -1) {
+        const str = id?.split('?')[0];
+        if (entry === str) {
           const str1 = code.replace(
             'if (process.client) {',
             `if (process.client) {${info}\n`
