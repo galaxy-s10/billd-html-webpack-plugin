@@ -47,6 +47,21 @@
 npm i billd-html-webpack-plugin --save-dev
 ```
 
+# 使用前注意
+
+**请确保你的package.json里面有以下字段：**
+
+```json
+{
+  "name": "xxxxxxxxxx",
+  "version": "xxxxxxxxxx",
+  "repository": {
+    "type": "xxxxxxxxxx",
+    "url": "xxxxxxxxxx"
+  }
+}
+```
+
 # 使用
 
 ## nuxt2
@@ -82,6 +97,26 @@ export default defineNuxtConfig({
     plugins: [
       // ...
       new BilldHtmlWebpackPlugin({ env: 'nuxt3' }).config,
+    ],
+  },
+});
+```
+
+## nuxt3.6+
+
+nuxt.config.ts
+
+```ts
+import BilldHtmlWebpackPlugin from 'billd-html-webpack-plugin';
+
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  // ...
+  vite: {
+    // ...
+    plugins: [
+      // ...
+      new BilldHtmlWebpackPlugin({ env: 'nuxt3-6' }).config,
     ],
   },
 });
@@ -197,10 +232,12 @@ export default defineConfig({
   // ...
   plugins: [
     // ...
-    new BilldHtmlWebpackPlugin({ env: 'nuxt3' }).config,
+    new BilldHtmlWebpackPlugin({ env: 'vite4' }).config,
   ],
 });
 ```
+
+> 注意：如果package.json里面配置了 `"type": "module"` ，则需要添加.default：`new BilldHtmlWebpackPlugin.default({ env: 'vite4' }).config`
 
 # 配置
 
