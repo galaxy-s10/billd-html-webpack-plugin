@@ -25,18 +25,20 @@ class PluginApply {
           (assets, cb) => {
             Object.entries(assets).forEach(([pathname, source]) => {
               if (pathname.match(/.html$/)) {
-                // source._value有可能是一个buffer，因此需要toString()
-                // @ts-ignore
+                // webpack5的某些版本的PROCESS_ASSETS_STAGE_ADDITIONAL阶段的source会没有_value
                 // eslint-disable-next-line
-                const str = source._value
-                  .toString()
-                  .replace(
-                    '</head>',
-                    `<script>${logInfo(log)}</script></head>`
-                  );
-                // @ts-ignore
-                // eslint-disable-next-line
-                source._value = str;
+                if (source._value) {
+                  // source._value有可能是一个buffer，因此需要toString()
+                  // eslint-disable-next-line
+                  const str = source._value
+                    .toString()
+                    .replace(
+                      '</head>',
+                      `<script>${logInfo(log)}</script></head>`
+                    );
+                  // eslint-disable-next-line
+                  source._value = str;
+                }
               }
             });
             cb();
