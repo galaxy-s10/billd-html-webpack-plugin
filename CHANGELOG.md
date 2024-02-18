@@ -1,3 +1,12 @@
+## [1.0.6](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.0.5...v1.0.6) (2024-02-18)
+
+
+### fix
+
+* webpack5小版本兼容 ([75d5a2a](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/75d5a2ad269f750bb56678409054349b8cc7f2a9))
+
+
+
 ## [1.0.5](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.0.4...v1.0.5) (2023-08-22)
 
 
