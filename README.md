@@ -49,7 +49,7 @@ npm i billd-html-webpack-plugin --save-dev
 
 # 使用前注意
 
-**请确保你的package.json里面有以下字段：**
+**请确保你的 package.json 里面有以下字段：**
 
 ```json
 {
@@ -237,7 +237,7 @@ export default defineConfig({
 });
 ```
 
-> 注意：如果package.json里面配置了 `"type": "module"` ，则需要添加.default：`new BilldHtmlWebpackPlugin.default({ env: 'vite4' }).config`
+> 注意：如果 package.json 里面配置了 `"type": "module"` ，则需要添加.default：`new BilldHtmlWebpackPlugin.default({ env: 'vite4' }).config`
 
 # 配置
 
@@ -287,6 +287,40 @@ console.log(
 //   committerEmail: '2274751790@qq.com',
 //   lastBuildDate: '2023/1/10 11:11:56',
 // };
+```
+
+# 调试
+
+- 查看列表
+
+```bash
+pnpm list --global
+```
+
+- 卸载
+
+```bash
+pnpm uninstall --global billd-html-webpack-plugin
+
+
+```
+
+- 在本地的 billd-html-webpack-plugin 项目目录下执行：
+
+```bash
+pnpm link --global --dir=./
+```
+
+- 启动项目：
+
+```bash
+npm run dev
+```
+
+- 在用到 billd-html-webpack-plugin 的项目目录下执行：
+
+```bash
+pnpm link --global billd-html-webpack-plugin
 ```
 
 # 引用
