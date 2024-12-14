@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import { defineConfig } from 'rollup';
+import dtsPlugin from 'rollup-plugin-dts';
 
 import pkg from './package.json';
 
@@ -191,5 +192,14 @@ export default defineConfig([
         babelHelpers: 'runtime', // 默认bundled,可选:"bundled" | "runtime" | "inline" | "external" | undefined
       }),
     ],
+  },
+  // .d.ts
+  {
+    input: './src/index.js',
+    output: {
+      file: './dist/index.d.ts',
+      name: pkg.name,
+    },
+    plugins: [json(), dtsPlugin()],
   },
 ]);
