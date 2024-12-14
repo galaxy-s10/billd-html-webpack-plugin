@@ -29,7 +29,7 @@ try {
   // 如果进程超时或有非零退出代码，execSync将抛出Error 对象
   execSync(`git push origin v${pkg.version}`, { stdio: 'inherit' });
   execSync(`git push`, { stdio: 'inherit' });
-  execSync('npm publish', {
+  execSync('npm publish --registry --registry=https://registry.npmjs.org/', {
     stdio: 'inherit',
     cwd: path.resolve(__dirname, '../'),
   });
