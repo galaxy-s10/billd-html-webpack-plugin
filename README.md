@@ -323,6 +323,12 @@ npm run dev
 pnpm link --global billd-html-webpack-plugin
 ```
 
+# 发布
+
+```bash
+npm adduser --registry=https://registry.npmjs.org/
+```
+
 # 引用
 
 - [https://git-scm.com/docs/git-show](https://git-scm.com/docs/git-show)
