@@ -14,7 +14,7 @@ import Webpack4Apply from './env/webpack4';
 import Webpack5Apply from './env/webpack5';
 import { errorLog } from './utils';
 
-class BilldHtmlWebpackPlugin {
+class BilldHtmlWebpackPluginClass {
   billdConfig = {
     pluginName: 'BilldHtmlWebpackPlugin',
     NODE_ENV: undefined,
@@ -120,4 +120,5 @@ class BilldHtmlWebpackPlugin {
 
 export { logData } from './getData';
 export const version = __VERSION__;
-export default BilldHtmlWebpackPlugin;
+export const BilldHtmlWebpackPlugin = BilldHtmlWebpackPluginClass;
+export default BilldHtmlWebpackPluginClass;
