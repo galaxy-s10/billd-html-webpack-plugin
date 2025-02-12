@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.2.0...v1.2.1) (2025-02-12)
+
+
+### fix
+
+* 边界处理 ([6e9a540](https://github.com/galaxy-s10/billd-html-webpack-plugin/commit/6e9a540eac81db64a6de6dd0668e98bae86bd8e4))
+
+
+
 # [1.2.0](https://github.com/galaxy-s10/billd-html-webpack-plugin/compare/v1.1.1...v1.2.0) (2024-12-14)
 
 
