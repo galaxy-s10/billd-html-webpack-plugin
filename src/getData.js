@@ -62,13 +62,10 @@ function updateDefaultLogData() {
     const pkg = JSON.parse(
       readFileSync(path.join(process.cwd(), 'package.json')).toString()
     );
-    defaultLogData.pkgName = pkg?.name;
-    defaultLogData.pkgVersion = pkg?.version;
+    defaultLogData.pkgName = pkg?.name || '';
+    defaultLogData.pkgVersion = pkg?.version || '';
     defaultLogData.pkgRepository =
-      // @ts-ignore
-      typeof pkg?.repository === 'object'
-        ? pkg?.repository?.url
-        : pkg?.repository;
+      pkg?.repository?.url || pkg?.repository || '';
     Object.keys(cmdMap).forEach((key) => {
       try {
         defaultLogData[key] = execSync(cmdMap[key]).toString().trim();
@@ -94,7 +91,7 @@ export const logData = (log) => {
   const tmpData = JSON.parse(JSON.stringify(defaultLogData));
   if (log) {
     Object.keys(tmpData).forEach((item) => {
-      tmpData[item] = log[item] === false ? '-' : tmpData[item];
+      tmpData[item] = log[item] === false ? '' : tmpData[item];
     });
   }
   return tmpData;
@@ -105,10 +102,7 @@ export const logInfo = (log) => {
   const tmpData = JSON.parse(JSON.stringify(defaultLogData));
   if (log) {
     Object.keys(tmpData).forEach((item) => {
-      tmpData[item] =
-        log[item] === false
-          ? JSON.stringify('-')
-          : JSON.stringify(tmpData[item]);
+      tmpData[item] = log[item] === false ? '' : `'${tmpData[item]}'`;
     });
   }
   return replaceKeyFromValue(templateStr.toString(), tmpData);

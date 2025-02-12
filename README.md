@@ -278,7 +278,7 @@ console.log(
 // {
 //   pkgName: 'xxxxx',
 //   pkgVersion: '0.0.1',
-//   pkgRepository: '-',
+//   pkgRepository: '',
 //   commitSubject: 'xxxxxx',
 //   commitBranch: 'feat-webrtc',
 //   committerDate: '2023-01-06 20:58:03 +0800',
@@ -301,8 +301,6 @@ pnpm list --global
 
 ```bash
 pnpm uninstall --global billd-html-webpack-plugin
-
-
 ```
 
 - 在本地的 billd-html-webpack-plugin 项目目录下执行：
