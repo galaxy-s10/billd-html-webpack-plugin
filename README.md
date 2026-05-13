@@ -24,7 +24,7 @@
 
 # 简介
 
-一个给你的项目注入构建信息的 webpack / vite 插件，兼容 nuxt2/3、vuecli4/5、webpack4/5、vite4、next12
+一个给你的项目注入构建信息的 webpack / vite 插件，兼容 nuxt2/3/4、vuecli4/5、webpack4/5、vite4、next12
 
 # 效果
 
