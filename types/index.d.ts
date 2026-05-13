@@ -4,6 +4,7 @@ export interface BilldHtmlWebpackPluginOption {
     | 'nuxt3'
     | 'nuxt3-6'
     | 'nuxt3-10'
+    | 'nuxt4'
     | 'vuecli4'
     | 'vuecli5'
     | 'webpack4'

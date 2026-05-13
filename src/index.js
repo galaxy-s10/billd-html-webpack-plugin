@@ -7,6 +7,7 @@ import Nuxt2Apply from './env/nuxt2';
 import Nuxt3Plugin from './env/nuxt3';
 import Nuxt3_10Plugin from './env/nuxt3-10';
 import Nuxt3_6Plugin from './env/nuxt3-6';
+import Nuxt4Plugin from './env/nuxt4';
 import Vite4Plugin from './env/vite4';
 import Vuecli4Apply from './env/vuecli4';
 import Vuecli5Apply from './env/vuecli5';
@@ -77,8 +78,9 @@ class BilldHtmlWebpackPluginClass {
       } else if (options.env === 'nuxt3-6') {
         this.config = new Nuxt3_6Plugin(this.billdConfig);
       } else if (options.env === 'nuxt3-10') {
-        console.log('nuxt3-10nuxt3-10');
         this.config = new Nuxt3_10Plugin(this.billdConfig);
+      } else if (options.env === 'nuxt4') {
+        this.config = new Nuxt4Plugin(this.billdConfig);
       } else if (options.env === 'vite4') {
         this.config = new Vite4Plugin(this.billdConfig);
       }
