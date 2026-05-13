@@ -16,12 +16,16 @@ class PluginConfig {
       name: pluginName,
       configResolved(config) {
         // @ts-ignore
-        entry = config.entry;
+        entry = config?.entry;
       },
       transform(code, id) {
-        if (id.indexOf(entry) !== -1) {
-          const str1 = `if (process.client) {${info}}\n${code}`;
-          return { code: str1 };
+        try {
+          if (entry && id.indexOf(entry) !== -1) {
+            const str1 = `if (process.client) {${info}}\n${code}`;
+            return { code: str1 };
+          }
+        } catch (error) {
+          errorLog(error);
         }
       },
       /**

@@ -5,6 +5,7 @@
 /** @typedef {import("vite").Plugin} Plugin */
 
 import { logInfo } from '../getData';
+import { errorLog } from '../utils';
 
 class PluginConfig {
   constructor({ pluginName, log }) {
@@ -16,24 +17,29 @@ class PluginConfig {
     const plugin = {
       name: pluginName,
       configResolved(resolvedConfig) {
-        console.log('configResolvedconfigResolved');
-        // @ts-ignore
-        const str1 = resolvedConfig.build.rollupOptions.input.entry;
-        const url = str1?.split('?')[0];
-        if (url) {
-          entry = url;
+        try {
+          // @ts-ignore
+          const str1 = resolvedConfig.build.rollupOptions.input.entry;
+          const url = str1?.split('?')[0];
+          if (url) {
+            entry = url;
+          }
+        } catch (error) {
+          errorLog(error);
         }
       },
       transform(code, id) {
-        console.log('kkkkkkkkk', info);
-        const str = id?.split('?')[0];
-        console.log(entry, str, '999');
-        if (entry === str) {
-          const str1 = code.replace(
-            'if (process.client) {',
-            `if (process.client) {${info}\n`
-          );
-          return { code: str1 };
+        try {
+          const str = id?.split('?')[0];
+          if (entry === str) {
+            const str1 = code.replace(
+              'if (process.client) {',
+              `if (process.client) {${info}\n`
+            );
+            return { code: str1 };
+          }
+        } catch (error) {
+          errorLog(error);
         }
       },
     };
