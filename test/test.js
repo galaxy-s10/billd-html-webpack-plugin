@@ -1,14 +1,5 @@
 (function () {
   try {
-    const log = function (title, value) {
-      console.log(
-        `%c ${title} %c ${value} ` + `%c`,
-        'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
-        'background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
-        'background:transparent'
-      );
-    };
-
     log('pkg名称:', { pkgName });
     log('pkg版本:', { pkgVersion });
     log('pkg仓库:', { pkgRepository });

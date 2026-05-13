@@ -321,6 +321,13 @@ npm run dev
 pnpm link --global billd-html-webpack-plugin
 ```
 
+> https://pnpm.io/zh/cli/unlink
+> 如果要删除使用 pnpm link --global <package> 建立的链接，则应使用 pnpm uninstall --global <package>。 pnpm unlink 仅删除当前> 目录中的链接。
+
+```bash
+pnpm uninstall --global billd-html-webpack-plugin
+```
+
 # 发布
 
 ```bash
